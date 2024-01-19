@@ -1,7 +1,7 @@
 import pandas as pd
 
 def problem1():
-    fileContents = pd.read_csv('scenario1.csv')
+    fileContents = pd.read_csv('scenario2.csv')
     print(fileContents)
 
 if __name__ == "__main__":
