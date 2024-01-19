@@ -1,4 +1,4 @@
-## This code was taken from code given as an example in Canvas for the course
+## This code was taken from an example in Canvas for the course
 
 import random
 import matplotlib.pyplot as plt
@@ -30,10 +30,14 @@ for experiment in range(1000):
 print(candidates)
 print(optimal_candidate)
 
+plt.figure(figsize=(30, 6))  # Adjust the size as needed
+
 x, y = zip(*optimal_solution_found_count.items())
 
 print(x)
 print(y)
+print(y[37])
+print(max(y))
 print(optimal_solution_found_count)
 plt.plot(x,y)
 # plt.show()
