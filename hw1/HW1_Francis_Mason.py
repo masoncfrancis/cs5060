@@ -1,6 +1,7 @@
 import pandas as pd
 import random
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def findStop(numbers: list, outputFileName: str, learnOptimal: bool):
@@ -49,10 +50,23 @@ def problem1(fileName: str):
     print("Optimal Solution Found Count at 37%: " + str(s1Result37['37']))
     computedPercent = list(s1ResultOptimalFound)[0]
     print("Optimal Stopping Point found at " + computedPercent +  "%. Count: " + str(s1ResultOptimalFound[computedPercent]))
-    
+
+
+def analyzeDataset(npData):
+    stepsTaken = 0; 
+    for i in npData:
+        stepsTaken += 1
+        
+
 
 def problem2():
-    pass
+    # I used chatGPT to help me learn how to use NumPy to create datasets of random numbers we can use
+    uniformData = np.random.uniform(1,99, size=1000)
+    analyzeDataset(uniformData)
+
+
+
+
 
 
 if __name__ == "__main__":
@@ -64,4 +78,5 @@ if __name__ == "__main__":
 
     # Problem 2
     print("Executing algorithm for problem 2")
+    problem2()
 
