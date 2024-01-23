@@ -2,8 +2,9 @@ import pandas as pd
 import random
 import matplotlib.pyplot as plt
 
-# The code in this function is a modified version of the code provided in the class example
+
 def findStop(numbers: list, outputFileName: str, learnOptimal: bool):
+    # The code in this function is a modified version of the code provided in the class example
     len_candidates = 100
     solution_found_count = {}
     optimal_solution_found_count = {}
@@ -41,8 +42,7 @@ def findStop(numbers: list, outputFileName: str, learnOptimal: bool):
     
 
 def problem1(fileName: str):
-
-    print("\nExecuting code for " + fileName)
+    print("\nExecuting problem 1 code for " + fileName)
     s1FileContents = pd.read_csv('scenario1.csv').iloc[:,0].astype(float).tolist()
     s1Result37 = findStop(s1FileContents, fileName + '-37.png', False)
     s1ResultOptimalFound = findStop(s1FileContents, fileName + '-optimal.png', True)
@@ -50,9 +50,18 @@ def problem1(fileName: str):
     computedPercent = list(s1ResultOptimalFound)[0]
     print("Optimal Stopping Point found at " + computedPercent +  "%. Count: " + str(s1ResultOptimalFound[computedPercent]))
     
-    
+
+def problem2():
+    pass
+
 
 if __name__ == "__main__":
+
+    # Problem 1
     print("Executing algorithm for problem 1")
     problem1('scenario1.csv')
     problem1('scenario2.csv')
+
+    # Problem 2
+    print("Executing algorithm for problem 2")
+
