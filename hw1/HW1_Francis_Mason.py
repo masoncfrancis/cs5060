@@ -31,14 +31,28 @@ def findStop(numbers: list, outputFileName: str, learnOptimal: bool):
     plt.plot(x,y)
     # plt.show()
     plt.savefig(outputFileName, bbox_inches='tight')
+    print("Graph file saved as " + outputFileName)
+    
+    if learnOptimal:
+        maxKey = str(max(optimal_solution_found_count, key=optimal_solution_found_count.get))
+        return {maxKey: optimal_solution_found_count[maxKey]}
+    else:
+        return {'37': optimal_solution_found_count['37']}
     
 
-def problem1():
-    print("Executing code for scenario1.csv")
+def problem1(fileName: str):
+
+    print("\nExecuting code for " + fileName)
     s1FileContents = pd.read_csv('scenario1.csv').iloc[:,0].astype(float).tolist()
-    findStop(s1FileContents, 'scenario1.png', False)
+    s1Result37 = findStop(s1FileContents, fileName + '-37.png', False)
+    s1ResultOptimalFound = findStop(s1FileContents, fileName + '-optimal.png', True)
+    print("Optimal Solution Found Count at 37%: " + str(s1Result37['37']))
+    computedPercent = list(s1ResultOptimalFound)[0]
+    print("Optimal Stopping Point found at " + computedPercent +  "%. Count: " + str(s1ResultOptimalFound[computedPercent]))
+    
     
 
 if __name__ == "__main__":
-    print("Executing algorithm for problem 1\n")
-    problem1()
+    print("Executing algorithm for problem 1")
+    problem1('scenario1.csv')
+    problem1('scenario2.csv')
