@@ -19,3 +19,8 @@ This problem is run by simply running the script. Make sure you have dependencie
 Test files **must** be named `scenario1.csv` and `scenario2.csv`. 
 
 Graph files will be saved as described in the console output. 
+
+
+## Problem 2
+
+Unfortunately I only coded the beginnings of problem 2 and was not able to finish. 
