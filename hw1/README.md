@@ -18,4 +18,4 @@ This problem is run by simply running the script. Make sure you have dependencie
 
 Test files **must** be named `scenario1.csv` and `scenario2.csv`. 
 
-Graph files will be output as described in the console output. 
+Graph files will be saved as described in the console output. 
