@@ -11,21 +11,35 @@ import matplotlib
 matplotlib.use('TkAgg') # comment out this line if you aren't using Tkinter. I had to include this to make it work on my machine
 import matplotlib.pyplot as plt
 
-def beta(a, b):
-    beta_dist = scipy.stats.beta(a, b)
-    return beta_dist
+# Dr. Mario's probablilities code
+def get_probabilities(drift=0):
+    
+    probs = [
+        np.random.normal(0, 5),
+        np.random.normal(-0.5,12),
+        np.random.normal(2,3.9),
+        np.random.normal(-0.5,7),
+        np.random.normal(-1.2,8),
+        np.random.normal(-3,7),
+        np.random.normal(-10,20),
+        np.random.normal(-0.5,1),
+        np.random.normal(-1,2),
+        np.random.normal(1,6),
+        np.random.normal(0.7,4),
+        np.random.normal(-6,11),
+        np.random.normal(-7,1),
+        np.random.normal(-0.5,2),
+        np.random.normal(-6.5,1),
+        np.random.normal(-3,6),
+        np.random.normal(0,8),
+        np.random.normal(2,3.9),
+        np.random.normal(-9,12),
+        np.random.normal(-1,6),
+        np.random.normal(-4.5,8)              
+    ]
+    
+    return probs
 
-x = np.linspace(0,1,100)
+# Part 1
 
-print(np.random.normal(0.5,0.5))
-a_current = 1
-b_current = 1
-
-for i in range(5):
-    draw = np.random.normal(0.5,0.5)
-    if draw > 0.5:
-        b_current += 1
-    else:
-        a_current += 1
-    plt.plot(beta(a_current, b_current).pdf(x))
-    plt.show()
+print(get_probabilities())
