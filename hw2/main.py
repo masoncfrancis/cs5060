@@ -67,6 +67,7 @@ def calculateAverageRewards(rewardsList):
     return sumAmount/entryCount
 
     
+# Runs the epsilon greedy algorithm for a given epsilon value    
 def epsilonGreedy(epsilonValue):
     maxRewards = createEmptyList(len(get_probabilities()))
     
@@ -74,13 +75,12 @@ def epsilonGreedy(epsilonValue):
     y = []
     rewards = []
 
-    probs = get_probabilities()
 
     for i in x:
         
         n = np.random.random() # generate random number to compare with epsilon
 
-        #probs = get_probabilities()
+        probs = get_probabilities()
         machineIndex = -1
 
         if n > epsilonValue: # Exploit
@@ -99,6 +99,7 @@ def epsilonGreedy(epsilonValue):
 
     plotLabel = str(epsilonValue)
     plt.plot(x, y, label=plotLabel)
+
 
 
 if __name__ == "__main__":
