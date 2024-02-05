@@ -74,11 +74,13 @@ def epsilonGreedy(epsilonValue):
     y = []
     rewards = []
 
+    probs = get_probabilities()
+
     for i in x:
-        probs = get_probabilities()
+        
         n = np.random.random() # generate random number to compare with epsilon
 
-        probs = get_probabilities()
+        #probs = get_probabilities()
         machineIndex = -1
 
         if n > epsilonValue: # Exploit
@@ -106,5 +108,6 @@ if __name__ == "__main__":
     epsilonGreedy(0.1)
     epsilonGreedy(0.4)
 
-    plot.show()
+    plt.legend()
+    plt.show()
     
