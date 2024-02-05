@@ -61,36 +61,42 @@ def createListOfLists(length):
     return list
     
 
+def calculateAverageRewards(rewardsList):
+    entryCount = len(rewardsList)
+    sumAmount = sum(rewardsList)
+    return sumAmount/entryCount
+
     
 def epsilonGreedy(epsilonValue):
     maxRewards = createEmptyList(len(get_probabilities()))
     
-    x = range(1, 10000 + 1) # values for the x axis of the plot
-    y = [] # values for each step of which machine index was drawn each time
-    # Note to self: y should be average reward
+    x = range(10000)
+    y = []
+    rewards = []
 
     for i in x:
+        probs = get_probabilities()
         n = np.random.random() # generate random number to compare with epsilon
 
         probs = get_probabilities()
+        machineIndex = -1
 
         if n > epsilonValue: # Exploit
             machineIndex = maxRewards.index(max(maxRewards))
-            y.append(machineIndex)
             if maxRewards[machineIndex] <= probs[machineIndex]: # set the value if reward was higher
                 maxRewards[machineIndex] = probs[machineIndex]
+            
         else: # Explore
             machineIndex = probs.index(random.choice(probs))
-            y.append(machineIndex)
             if maxRewards[machineIndex] <= probs[machineIndex]: # set the value if reward was higher
                 maxRewards[machineIndex] = probs[machineIndex]
-    
-   
+            
+        rewards.append(probs[machineIndex])
+        y.append(calculateAverageRewards(rewards))
             
 
     plotLabel = str(epsilonValue)
     plt.plot(x, y, label=plotLabel)
-    plt.show()
 
 
 if __name__ == "__main__":
@@ -99,4 +105,6 @@ if __name__ == "__main__":
     epsilonGreedy(0.05)
     epsilonGreedy(0.1)
     epsilonGreedy(0.4)
+
+    plot.show()
     
