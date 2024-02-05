@@ -5,11 +5,16 @@
 # If you can't install scipy, numpy, and matplotlib using the requirements.txt file, please install them manually
 # using pip. Also, Tkinter is required to show plots for this code. 
 
-import scipy
+import random
 import numpy as np
 import matplotlib
 matplotlib.use('TkAgg') # comment out this line if you aren't using Tkinter. I had to include this to make it work on my machine
 import matplotlib.pyplot as plt
+
+
+# Part 1
+
+# My implementation was inspired by material available at https://www.codingninjas.com/studio/library/epsilon-greedy-algorithm
 
 # Dr. Mario's probablilities code
 def get_probabilities(drift=0):
@@ -40,6 +45,10 @@ def get_probabilities(drift=0):
     
     return probs
 
-# Part 1
 
-print(get_probabilities())
+def createEmptyList(length):
+    list = []
+    for i in length:
+        list.append(0)
+    return list
+    
