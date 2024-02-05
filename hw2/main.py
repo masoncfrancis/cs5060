@@ -2,8 +2,8 @@
 # Mason Francis
 # CS 5060
 
-# If you can't install scipy, numpy, and matplotlib using the requirements.txt file, please install them manually
-# using pip. Also, Tkinter is required to show plots for this code. 
+# If you can't install numpy and matplotlib using the requirements.txt file, please install them manually using pip. \
+# Also, Tkinter is required to show plots for this code. 
 
 import random
 import numpy as np
@@ -46,9 +46,57 @@ def get_probabilities(drift=0):
     return probs
 
 
+# Creates a List of 0s of the defined length
 def createEmptyList(length):
     list = []
-    for i in length:
+    for i in range(length):
         list.append(0)
     return list
+    
+# Creates a List of empty Lists
+def createListOfLists(length):
+    list = []
+    for i in range(length):
+        list.append([])
+    return list
+    
+
+    
+def epsilonGreedy(epsilonValue):
+    maxRewards = createEmptyList(len(get_probabilities()))
+    
+    x = range(1, 10000 + 1) # values for the x axis of the plot
+    y = [] # values for each step of which machine index was drawn each time
+    # Note to self: y should be average reward
+
+    for i in x:
+        n = np.random.random() # generate random number to compare with epsilon
+
+        probs = get_probabilities()
+
+        if n > epsilonValue: # Exploit
+            machineIndex = maxRewards.index(max(maxRewards))
+            y.append(machineIndex)
+            if maxRewards[machineIndex] <= probs[machineIndex]: # set the value if reward was higher
+                maxRewards[machineIndex] = probs[machineIndex]
+        else: # Explore
+            machineIndex = probs.index(random.choice(probs))
+            y.append(machineIndex)
+            if maxRewards[machineIndex] <= probs[machineIndex]: # set the value if reward was higher
+                maxRewards[machineIndex] = probs[machineIndex]
+    
+   
+            
+
+    plotLabel = str(epsilonValue)
+    plt.plot(x, y, label=plotLabel)
+    plt.show()
+
+
+if __name__ == "__main__":
+
+    epsilonGreedy(0.01)
+    epsilonGreedy(0.05)
+    epsilonGreedy(0.1)
+    epsilonGreedy(0.4)
     
