@@ -15,8 +15,6 @@ import scipy
 
 # Part 1
 
-# My implementation was inspired by material available at https://www.codingninjas.com/studio/library/epsilon-greedy-algorithm
-
 # Dr. Mario's probablilities code
 def get_probabilities(drift=0, step=0):
 
