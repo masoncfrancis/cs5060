@@ -140,18 +140,25 @@ if __name__ == "__main__":
     # Part 1
     print("Executing part 1 of the assignment")
 
+
+    # Prepare for plotting
     fig, axs = plt.subplots(1, 2)
 
+
+    # Run Epsilon Greedy algorithms
     epsilonGreedy(0.01, axs[0])
     epsilonGreedy(0.05, axs[0])
     epsilonGreedy(0.1, axs[0])
     epsilonGreedy(0.4, axs[0])
 
+    # plot the reuslts
     axs[0].legend()
     axs[0].set_xlabel("Step")
     axs[0].set_ylabel("Avg. Reward")
     axs[0].set_title('Epsilon Runs')
 
+
+    # Run Thompson sampling and plot the results
     thompsonSampling(axs[1])
     axs[1].legend()
     axs[1].set_xlabel("Step")
@@ -165,3 +172,4 @@ if __name__ == "__main__":
     # Part 2
     print("Executing part 2 of the assignment")
 
+    # Unfortunately I ran out of time and didn't get to this part :(
