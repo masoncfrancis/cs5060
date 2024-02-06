@@ -52,13 +52,7 @@ def createEmptyList(length):
     for i in range(length):
         list.append(0)
     return list
-    
-# Creates a List of empty Lists
-def createListOfLists(length):
-    list = []
-    for i in range(length):
-        list.append([])
-    return list
+
     
 
 def calculateAverageRewards(rewardsList):
@@ -97,12 +91,15 @@ def epsilonGreedy(epsilonValue):
         y.append(calculateAverageRewards(rewards))
             
 
-    plotLabel = str(epsilonValue)
+    plotLabel = str(epsilonValue) + " Epsilon"
     plt.plot(x, y, label=plotLabel)
 
 
 
 if __name__ == "__main__":
+
+    # Part 1
+    print("Executing part 1 of the assignment")
 
     epsilonGreedy(0.01)
     epsilonGreedy(0.05)
@@ -110,5 +107,10 @@ if __name__ == "__main__":
     epsilonGreedy(0.4)
 
     plt.legend()
+    plt.xlabel("Step")
+    plt.ylabel("Avg. Reward")
     plt.show()
+
+    print("Executing part 2 of the assignment")
+
     
