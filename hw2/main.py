@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib
 matplotlib.use('TkAgg') # comment out this line if you aren't using Tkinter. I had to include this to make it work on my machine
 import matplotlib.pyplot as plt
+import scipy
 
 
 # Part 1
@@ -53,8 +54,14 @@ def createEmptyList(length):
         list.append(0)
     return list
 
+
+# Generates beta distribution. Function provided by Dr. Mario
+def beta(a, b):
+    beta_dist = scipy.stats.beta(a, b)
+    return beta_dist
     
 
+# Takes a list of numbers and calculates the mean of all values
 def calculateAverageRewards(rewardsList):
     entryCount = len(rewardsList)
     sumAmount = sum(rewardsList)
@@ -62,7 +69,7 @@ def calculateAverageRewards(rewardsList):
 
     
 # Runs the epsilon greedy algorithm for a given epsilon value    
-def epsilonGreedy(epsilonValue):
+def epsilonGreedy(epsilonValue, plot):
     maxRewards = createEmptyList(len(get_probabilities()))
     
     x = range(10000)
@@ -92,7 +99,39 @@ def epsilonGreedy(epsilonValue):
             
 
     plotLabel = str(epsilonValue) + " Epsilon"
-    plt.plot(x, y, label=plotLabel)
+    plot.plot(x, y, label=plotLabel)
+
+
+def thompsonSampling(plot):
+    x = range(10000)
+    y = []
+    rewards = []
+
+    # prepare initial distributions for each arm
+    distributions = []
+    for i in range(len(get_probabilities())):
+        distributions.append({'a': 1, 'b': 1, 'dist': beta(1, 1)})
+
+    for i in x:
+        # take samples
+        samples = []
+        for dist in distributions:
+            samples.append(dist['dist'].rvs(size=1))
+        
+        maxSampleIndex = samples.index(max(samples))
+
+
+        chosenArmVal = get_probabilities()[maxSampleIndex]
+        rewards.append(chosenArmVal)
+        y.append(calculateAverageRewards(rewardsList=rewards))
+        
+        if chosenArmVal >= 1:
+            distributions[maxSampleIndex]['a'] += 1
+        else:
+            distributions[maxSampleIndex]['b'] += 1
+        distributions[maxSampleIndex]['dist'] = beta(distributions[maxSampleIndex]['a'], distributions[maxSampleIndex]['b'])
+    
+    plot.plot(x, y, label="Thompson")
 
 
 
@@ -101,16 +140,28 @@ if __name__ == "__main__":
     # Part 1
     print("Executing part 1 of the assignment")
 
-    epsilonGreedy(0.01)
-    epsilonGreedy(0.05)
-    epsilonGreedy(0.1)
-    epsilonGreedy(0.4)
+    fig, axs = plt.subplots(1, 2)
 
-    plt.legend()
-    plt.xlabel("Step")
-    plt.ylabel("Avg. Reward")
+    epsilonGreedy(0.01, axs[0])
+    epsilonGreedy(0.05, axs[0])
+    epsilonGreedy(0.1, axs[0])
+    epsilonGreedy(0.4, axs[0])
+
+    axs[0].legend()
+    axs[0].set_xlabel("Step")
+    axs[0].set_ylabel("Avg. Reward")
+    axs[0].set_title('Epsilon Runs')
+
+    thompsonSampling(axs[1])
+    axs[1].legend()
+    axs[1].set_xlabel("Step")
+    axs[1].set_ylabel("Avg. Reward")
+    axs[1].set_title("Thompson sampling")
+
+
     plt.show()
 
+
+    # Part 2
     print("Executing part 2 of the assignment")
 
-    
