@@ -114,8 +114,8 @@ def epsilonGreedy(epsilonValue, plot, movingBandits=False):
 
 
 # Runs the Thompson sampling algorithm, taking into account whether we are working with moving bandits or not
-def thompsonSampling(plot, movingBandits=False):
-    x = range(10000)
+def thompsonSampling(plot, movingBandits=False, startingStep=0):
+    x = range(startingStep, 10000)
     y = []
     rewards = []
 
@@ -212,5 +212,14 @@ if __name__ == "__main__":
     axs[1].set_xlabel("Step")
     axs[1].set_ylabel("Avg. Reward")
     axs[1].set_title("Thompson sampling")
+
+    plt.show()
+
+    # Run Thompson sampling again starting at 3000
+    thompsonSampling(plt, movingBandits=True, startingStep=3000)
+    plt.legend()
+    plt.xlabel("Steps")
+    plt.ylabel("Avg. Reward")
+    plt.title("Thompson Sampling starting at 3000")
 
     plt.show()
