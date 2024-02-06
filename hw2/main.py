@@ -142,7 +142,7 @@ def thompsonSampling(plot, movingBandits=False, startingStep=0):
         rewards.append(chosenArmVal)
         y.append(calculateAverageRewards(rewardsList=rewards))
         
-        if chosenArmVal >= 1:
+        if chosenArmVal >= 1: # I set my threshold for Thompson Sampling success to be 1
             distributions[maxSampleIndex]['a'] += 1
         else:
             distributions[maxSampleIndex]['b'] += 1
