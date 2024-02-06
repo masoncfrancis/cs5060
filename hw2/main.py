@@ -77,7 +77,7 @@ def epsilonGreedy(epsilonValue, plot, movingBandits=False):
     
     x = range(10000)
     y = []
-    rewards = []
+    rewards = [] # holds the history of rewards, used in calculating average
 
 
     for i in x:
@@ -103,6 +103,7 @@ def epsilonGreedy(epsilonValue, plot, movingBandits=False):
             if maxRewards[machineIndex] <= probs[machineIndex]: # set the value if reward was higher
                 maxRewards[machineIndex] = probs[machineIndex]
             
+        # Calculate average rewards
         rewards.append(probs[machineIndex])
         y.append(calculateAverageRewards(rewards))
             
@@ -115,7 +116,7 @@ def epsilonGreedy(epsilonValue, plot, movingBandits=False):
 def thompsonSampling(plot, movingBandits=False, startingStep=0):
     x = range(startingStep, 10000)
     y = []
-    rewards = []
+    rewards = [] # holds the history of rewards, used in calculating average
 
     # prepare initial distributions for each arm
     distributions = []
@@ -128,15 +129,17 @@ def thompsonSampling(plot, movingBandits=False, startingStep=0):
         for dist in distributions:
             samples.append(dist['dist'].rvs(size=1))
         
-        maxSampleIndex = samples.index(max(samples))
+        maxSampleIndex = samples.index(max(samples)) # get the biggest sample
 
-        if movingBandits:
+        if movingBandits: # apply moving bandits changes if applicable
             drift = -0.001 * i
             probs = get_probabilities(drift=drift, step=i)
         else: # normal run 
             probs = get_probabilities()
 
-        chosenArmVal = probs[maxSampleIndex]
+        chosenArmVal = probs[maxSampleIndex] # the reward value of the chosen arm
+
+        # Calculate average rewards
         rewards.append(chosenArmVal)
         y.append(calculateAverageRewards(rewardsList=rewards))
         
