@@ -36,8 +36,7 @@ class BetaMotion:
         self.prices = []
         self.simulate_paths()
 
-
-if __name__ == "__main__":
+def part1():
     print("Executing part 1...")
 
     # Model Parameters
@@ -75,4 +74,7 @@ if __name__ == "__main__":
 
     print("Part 1 finished")
 
-    print("Executing part 2")
+
+if __name__ == "__main__":
+    part1()
+    
