@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas
 
 # The code for part 1 was modified from Dr. Mario's code
 
@@ -73,6 +74,10 @@ def part1():
     print("Cost of option: $", np.average(call_payoffs))
 
     print("Part 1 finished")
+
+
+def part2():
+    print("Executing part 2")
 
 
 if __name__ == "__main__":
