@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# The code for part 1 was modified from Dr. Mario's code
 
 class European_Call_Payoff:
 
