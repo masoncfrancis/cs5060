@@ -25,8 +25,14 @@ def getOnlyEHPProcs(daysProcValues):
 
 
 def part1():
-    pass
+    print("Running code for part 1")
+    
 
+
+# PART 2 METHODS
+
+def part2():
+    pass
 
 def main():
     part1()
