@@ -6,7 +6,7 @@ import random
 
 
 def getProcValue():
-    return random.uniforn(1, 1000)
+    return random.uniform(1, 1000)
 
 
 def getDaysProcValues():
