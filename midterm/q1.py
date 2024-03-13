@@ -11,30 +11,34 @@ def getProcValue():
 
 def getDaysProcValues():
     dayProcValues = list()  # list to store processor values for the day
-
     for i in range(1000):  # calculate day's values
         dayProcValues.append(getProcValue())
 
+    dayProcValues.sort()
     return dayProcValues
 
 
-def getOnlyEHPProcs(daysProcValues):
-    procValues = dict()
-    for i in range(1, 51):
-        procValues[i] = []
-        for j in daysProcValues:
-            pass  # continue here
-    pass
+def getTopPercentOfValues(percentAsDecimal: list[float]):
+    filteredList = []
+    percentAsDecimal.sort()
+    numOfViableProcs = .58 * 1000
+    numOfEhpProcs = int(.002 * numOfViableProcs)
+    return percentAsDecimal[-numOfEhpProcs - 1:]
+
+
+def getEHPProcs(dayProcValues):
+    return getTopPercentOfValues(dayProcValues)
 
 
 def part1():
     print("Running code for part 1")
-
-
-# PART 2 METHODS
-
-def part2():
-    pass
+    # getting values for ehp processors
+    procValues = dict()
+    for i in range(1, 51):  # for 50 days
+        dayProcValues = getDaysProcValues()
+        ehpProcs = getEHPProcs(dayProcValues)
+        procValues[i] = ehpProcs
+    print(procValues)
 
 
 def main():
