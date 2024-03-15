@@ -23,7 +23,7 @@ def getTopPercentOfValues(percentAsDecimal: list[float]):
     percentAsDecimal.sort()
     numOfViableProcs = .58 * 1000
     numOfEhpProcs = int(.002 * numOfViableProcs)
-    return percentAsDecimal[-numOfEhpProcs - 1:]
+    return percentAsDecimal[-numOfEhpProcs:]
 
 
 def getEHPProcs(dayProcValues):
@@ -38,7 +38,14 @@ def part1():
         dayProcValues = getDaysProcValues()
         ehpProcs = getEHPProcs(dayProcValues)
         procValues[i] = ehpProcs
-    print(procValues)
+    procValueKeys = list(procValues.keys())
+    procValueCount = [len(i) for i in procValues.values()]
+
+    plt.plot(procValueKeys, procValueCount)
+    plt.xlabel("Day")
+    plt.ylabel("Number of processors produced")
+    plt.title("EHP processor production")
+    plt.show()
 
 
 def main():
