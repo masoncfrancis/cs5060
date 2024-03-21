@@ -48,6 +48,10 @@ def part1():
     plt.show()
 
 
+def part2():
+    print("Running code for part 2")
+
+
 def main():
     part1()
 
