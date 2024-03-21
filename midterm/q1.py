@@ -3,9 +3,6 @@ import random
 import time
 
 
-# PART 1 METHODS
-
-
 def getProcValue():
     return random.uniform(1, 1000)
 
@@ -17,6 +14,9 @@ def getDaysProcValues():
 
     dayProcValues.sort()
     return dayProcValues
+
+
+# PART 1 METHODS
 
 
 def getTopPercentOfValues(percentAsDecimal: list[float]):
@@ -67,6 +67,7 @@ def part1():
 
 
 # PART 2 METHODS
+
 
 def part2():
     print("Running code for part 2")
