@@ -47,25 +47,33 @@ def getHighLowDiffDict(frame):
 
 
 def part1():
+    print("Running code for Q3 part 1")
+
     # get plotting stuff initialized
     fix, axs = plt.subplots(2, 2)
 
     # read in AAPL
     appleFrame = readCsv('data/AAPL.csv')
     appleCloseDict = getCloseDict(appleFrame)
-    appleHighLowDiffDict = getHighLowDiffDict(appleFrame)
+    appleHighLowDiffDict = getHighLowDiffDict(appleFrame) \
+ \
+        # note: for plotting, GitHub copilot helped me format the labels on the x axis
 
     # plot AAPL Close values
     axs[0, 0].plot(appleCloseDict.keys(), appleCloseDict.values())
     axs[0, 0].set_xlabel("Date")
     axs[0, 0].set_ylabel("Value ($)")
     axs[0, 0].set_title("AAPL Closing Values")
+    axs[0, 0].set_xticks(
+        [list(appleCloseDict.keys())[0], list(appleCloseDict.keys())[-1]])  # Set xticks to first and last date
 
     # plot AAPL High/Low difference values. To calculate, high-low=value was used
     axs[0, 1].plot(appleHighLowDiffDict.keys(), appleHighLowDiffDict.values())
     axs[0, 1].set_xlabel("Date")
     axs[0, 1].set_ylabel("Value ($)")
     axs[0, 1].set_title("AAPL High/Low Difference")
+    axs[0, 1].set_xticks([list(appleHighLowDiffDict.keys())[0],
+                          list(appleHighLowDiffDict.keys())[-1]])  # Set xticks to first and last date
 
     # read in TSLA
     teslaFrame = readCsv('data/TSLA.csv')
@@ -77,14 +85,20 @@ def part1():
     axs[1, 0].set_xlabel("Date")
     axs[1, 0].set_ylabel("Value ($)")
     axs[1, 0].set_title("TSLA Closing Values")
+    axs[1, 0].set_xticks(
+        [list(teslaCloseDict.keys())[0], list(teslaCloseDict.keys())[-1]])  # Set xticks to first and last date
 
     # plot TSLA High/Low difference values. To calculate, high-low=value was used
     axs[1, 1].plot(teslaHighLowDiffDict.keys(), teslaHighLowDiffDict.values())
     axs[1, 1].set_xlabel("Date")
     axs[1, 1].set_ylabel("Value ($)")
     axs[1, 1].set_title("TSLA High/Low Difference")
+    axs[1, 1].set_xticks([list(teslaHighLowDiffDict.keys())[0],
+                          list(teslaHighLowDiffDict.keys())[-1]])  # Set xticks to first and last date
 
     plt.show()
+
+    print("Q3 part 1 code finished")
 
 
 # GENERAL METHODS
