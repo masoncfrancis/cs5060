@@ -55,9 +55,9 @@ def part1():
     # read in AAPL
     appleFrame = readCsv('data/AAPL.csv')
     appleCloseDict = getCloseDict(appleFrame)
-    appleHighLowDiffDict = getHighLowDiffDict(appleFrame) \
- \
-        # note: for plotting, GitHub copilot helped me format the labels on the x axis
+    appleHighLowDiffDict = getHighLowDiffDict(appleFrame)
+
+    # note: for plotting, GitHub copilot helped me format the labels on the x axis
 
     # plot AAPL Close values
     axs[0, 0].plot(appleCloseDict.keys(), appleCloseDict.values())
