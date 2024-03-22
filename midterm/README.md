@@ -16,6 +16,20 @@ most 1 EHP processor per day. I calculated the value the processor needed to hav
 Then, if one was found, it stopped immediately and moved on to the next day. It does this repeatedly until it gets
 through all 50 days. The time it takes to find an EHP processor each day is plotted.
 
+## Q2
+
+### Part 1
+
+In this part I have 2 nested for loops checking for 24 months for each area. I plot for each area and show them all at
+once.
+
+### Part 2
+
+I'll be honest, I'm not quite sure when to move them. The yield in each area is quite erratic. Because of this, I can't
+say I'd change them from where they are now. If I'm wrong and it would be better to move them, there's a decent chance
+I coded the algorithm in Part 1 wrong. In that case, I would move the teams to different areas when that area appears to
+have a more consistent yield, but would be watchful in case the yield begins to drop off.
+
 ## Q5
 
 I'll be honest, this course is a bit difficult for me. The hardest thing for me is the mathy stuff. I know that's an
