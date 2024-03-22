@@ -33,7 +33,28 @@ def getMineralValue(areaNum: int):
 # PART 1 METHODS
 
 def part1():
-    pass
+    print("Running code for Q2 part 1")
+
+    # get the plot ready
+    fix, axs = plt.subplots(2, 5)
+
+    for i in range(1, 11):  # check for all areas
+        areaValues = dict()
+        for j in range(23):  # check for 2 years once a month
+            areaValues[j] = getMineralValue(i)
+        areaValueKeys = list(areaValues.keys())
+        areaValueValues = [i for i in areaValues.values()]
+
+        # calculate subplot position in grid - ChatGPT helped me with this in formatting my graph nicely
+        row = (i - 1) // 5
+        col = (i - 1) % 5
+
+        axs[row, col].plot(areaValueKeys, areaValueValues)
+        axs[row, col].set_xlabel("Month")
+        axs[row, col].set_ylabel("Value")
+        axs[row, col].set_title("Area" + str(i))
+
+    plt.show()
 
 
 def main():
