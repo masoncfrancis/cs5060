@@ -1,5 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import random
+import scipy
+
+
+# GENERAL METHODS
 
 
 def getMineralValue(areaNum: int):
@@ -32,6 +37,7 @@ def getMineralValue(areaNum: int):
 
 # PART 1 METHODS
 
+
 def part1():
     print("Running code for Q2 part 1")
 
@@ -40,7 +46,7 @@ def part1():
 
     for i in range(1, 11):  # check for all areas
         areaValues = dict()
-        for j in range(23):  # check for 2 years once a month
+        for j in range(24):  # check for 2 years once a month
             areaValues[j] = getMineralValue(i)
         areaValueKeys = list(areaValues.keys())
         areaValueValues = [i for i in areaValues.values()]
@@ -59,8 +65,106 @@ def part1():
     print("Q2 part 1 code finished")
 
 
+# PART 3 METHODS
+
+
+def part3():
+    print("Running code for Q2 part 3")
+
+    # get the plot ready
+    fix, axs = plt.subplots(2, 5)
+
+    for i in range(1, 11):  # check for all areas
+        areaValueKeys, areaValueValues = epsilonGreedy(.01, movingBandits=True)
+
+        # calculate subplot position in grid - ChatGPT helped me with this in formatting my graph nicely
+        row = (i - 1) // 5
+        col = (i - 1) % 5
+
+        axs[row, col].plot(areaValueKeys, areaValueValues)
+        axs[row, col].set_xlabel("Month")
+        axs[row, col].set_ylabel("Value")
+        axs[row, col].set_title("Area" + str(i))
+
+    plt.show()
+
+    print("Q2 part 3 code finished")
+
+
+def epsilonGreedy(epsilonValue, movingBandits=False):
+    maxRewards = createEmptyList(len(get_probabilities()))
+
+    x = range(5)
+    y = []
+    rewards = []  # holds the history of rewards, used in calculating average
+
+    for i in x:
+
+        n = np.random.random()  # generate random number to compare with epsilon
+
+        probs = get_probabilities()
+        machineIndex = -1
+
+        if n > epsilonValue:  # Exploit
+            machineIndex = maxRewards.index(max(maxRewards))
+            if maxRewards[machineIndex] <= probs[machineIndex]:  # set the value if reward was higher
+                maxRewards[machineIndex] = probs[machineIndex]
+
+        else:  # Explore
+            machineIndex = probs.index(random.choice(probs))
+            if maxRewards[machineIndex] <= probs[machineIndex]:  # set the value if reward was higher
+                maxRewards[machineIndex] = probs[machineIndex]
+
+        # Calculate average rewards
+        rewards.append(probs[machineIndex])
+        y.append(calculateAverageRewards(rewards))
+
+    return x, y
+
+
+def get_probabilities():
+    probs = [
+        np.random.beta(2, 2) + 1,
+        np.random.beta(3, 7) * 3,
+        np.random.normal(2.4, 1.8),
+        np.random.uniform(-1, 4),
+        np.random.normal(0, 9),
+        np.random.beta(7, 3) + 2,
+        np.random.uniform(0, 4),
+        np.random.beta(3, 7) * 2,
+        np.random.normal(2, 1.4),
+        np.random.normal(1.3, 7)
+    ]
+    return probs
+
+
+# Creates a List of 0s of the defined length
+def createEmptyList(length):
+    list = []
+    for i in range(length):
+        list.append(0)
+    return list
+
+
+# Generates beta distribution. Function provided by Dr. Mario
+def beta(a, b):
+    beta_dist = scipy.stats.beta(a, b)
+    return beta_dist
+
+
+# Takes a list of numbers and calculates the mean of all values
+def calculateAverageRewards(rewardsList):
+    entryCount = len(rewardsList)
+    sumAmount = sum(rewardsList)
+    return sumAmount / entryCount
+
+
+# GENERAL METHODS
+
+
 def main():
     part1()
+    part3()
 
 
 if __name__ == "__main__":
