@@ -65,7 +65,7 @@ def part1():
 
     plt.show()
 
-    print("Q1 Part 1 code finished")
+    print("Q1 part 1 code finished")
 
 
 # PART 2 METHODS
@@ -96,7 +96,7 @@ def part2():
     plt.show()
 
 
-print("Q1 Part 2 code finished")
+print("Q1 part 2 code finished")
 
 
 def main():

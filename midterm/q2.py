@@ -56,6 +56,8 @@ def part1():
 
     plt.show()
 
+    print("Q2 part 1 code finished")
+
 
 def main():
     part1()
