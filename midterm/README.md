@@ -6,7 +6,15 @@
 
 In part 1, I generate processor values for 50 days, 100 per day. I calculate the percentage of viable and EHP processors
 according to the percentages given. I then count how many processors per day fit that amount, and plot it. This results
-in a plot that is in a straight line.
+in a plot that is in a straight line. The time it takes to find EHP processors each day is plotted for comparison to
+part 2.
+
+### Part 2
+
+In part 2, I generate processor values for 50 days just like in part 1, then I make an assumption that I will find at
+most 1 EHP processor per day. I calculated the value the processor needed to have to be considered an EHP processor,
+Then, if one was found, it stopped immediately and moved on to the next day. It does this repeatedly until it gets
+through all 50 days. The time it takes to find an EHP processor each day is plotted.
 
 ## Q5
 
