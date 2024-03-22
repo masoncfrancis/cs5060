@@ -32,7 +32,7 @@ def getEHPProcs(dayProcValues):
 
 
 def part1():
-    print("Running code for part 1")
+    print("Running code for Q1 part 1")
     # getting values for ehp processors
     procValues = dict()
     timeTaken = dict()
@@ -65,12 +65,14 @@ def part1():
 
     plt.show()
 
+    print("Q1 Part 1 code finished")
+
 
 # PART 2 METHODS
 
 
 def part2():
-    print("Running code for part 2")
+    print("Running code for Q1 part 2")
     procValues = dict()
     timeTaken = dict()
     for i in range(1, 51):  # for 50 days
@@ -92,6 +94,9 @@ def part2():
     plt.xlabel("Day #")
     plt.ylabel("Time Taken (s)")
     plt.show()
+
+
+print("Q1 Part 2 code finished")
 
 
 def main():
