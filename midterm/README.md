@@ -48,6 +48,10 @@ slightly stronger. Their trending direction (up/down) on the graph wasn't very c
 I made this choice by observing the range of values for each graph in repeated test runs. Area 4 in particular
 had a more consistently higher high end of the graph than some others did.
 
+## Q3
+
+### Part 1
+
 ## Q5
 
 I'll be honest, this course is a bit difficult for me. The hardest thing for me is the mathy stuff. I know that's an

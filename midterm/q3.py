@@ -2,10 +2,18 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
+# GENERAL METHODS
+
+def trimColNames(colName: str):
+    return colName.strip()
+
+
 # PART 1 METHODS
 
 def readCsv(fileName: str):
-    frame = pd.read_csv(fileName, usecols=['Date', 'Close', 'High', 'Low'])
+    frame = pd.read_csv(fileName, header=0)
+    frame.columns = [trimColNames(colName) for colName in
+                     frame]  # GitHub Copilot helped me figure out how to trim whitespace from column names
     frameReordered = frame.iloc[::-1]  # figured out how to do this reordering action using Phind.com
     return frameReordered
 
@@ -13,12 +21,12 @@ def readCsv(fileName: str):
 def getCloseDict(frame):
     processedDict = dict()
     for index, row in frame.iterrows():  # ChatGPT helped me learn how to iterate through a pandas data frame
-        if row['Close'][-1] == "$":
-            closeVal = float(row['Close'][-1:])
+        if str(row['Close'])[0] == "$":
+            closeVal = float(row['Close'][1:])
         else:
             closeVal = float(row['Close'])
 
-        processedDict[row['Date']] = (closeVal)
+        processedDict[row['Date']] = closeVal
 
     return processedDict
 
@@ -26,9 +34,9 @@ def getCloseDict(frame):
 def getHighLowDiffDict(frame):
     processedDict = dict()
     for index, row in frame.iterrows():  # ChatGPT helped me learn how to iterate through a pandas data frame
-        if row['High'][-1] == "$" and row['Low'][-1] == "$":
-            highVal = float(row['High'][-1:])
-            lowVal = float(row['Low'][-1:])
+        if str(row['High'])[0] == "$" and str(row['Low'])[0] == "$":
+            highVal = float(row['High'][1:])
+            lowVal = float(row['Low'][1:])
         else:
             highVal = float(row['High'])
             lowVal = float(row['Low'])
@@ -48,12 +56,16 @@ def part1():
     appleHighLowDiffDict = getHighLowDiffDict(appleFrame)
 
     # plot AAPL Close values
-    axs[0].plot(appleCloseDict.keys(), appleCloseDict.values())
-    axs[0].set_xlabel("Date")
-    axs[0].set_ylabel("Value ($)")
-    axs[0].set_title("AAPL Closing Values")
+    axs[0, 0].plot(appleCloseDict.keys(), appleCloseDict.values())
+    axs[0, 0].set_xlabel("Date")
+    axs[0, 0].set_ylabel("Value ($)")
+    axs[0, 0].set_title("AAPL Closing Values")
 
     # plot AAPL High/Low difference values. To calculate, high-low=value was used
+    axs[0, 1].plot(appleHighLowDiffDict.keys(), appleHighLowDiffDict.values())
+    axs[0, 1].set_xlabel("Date")
+    axs[0, 1].set_ylabel("Value ($)")
+    axs[0, 1].set_title("AAPL High/Low Difference")
 
     # read in TSLA
     teslaFrame = readCsv('data/TSLA.csv')
@@ -61,10 +73,18 @@ def part1():
     teslaHighLowDiffDict = getHighLowDiffDict(teslaFrame)
 
     # plot TSLA Close values
-    axs[1].plot(teslaCloseDict.keys(), teslaCloseDict.values())
-    axs[1].set_xlabel("Date")
-    axs[1].set_ylabel("Value ($)")
-    axs[1].set_title("TSLA Closing Values")
+    axs[1, 0].plot(teslaCloseDict.keys(), teslaCloseDict.values())
+    axs[1, 0].set_xlabel("Date")
+    axs[1, 0].set_ylabel("Value ($)")
+    axs[1, 0].set_title("TSLA Closing Values")
+
+    # plot TSLA High/Low difference values. To calculate, high-low=value was used
+    axs[1, 1].plot(teslaHighLowDiffDict.keys(), teslaHighLowDiffDict.values())
+    axs[1, 1].set_xlabel("Date")
+    axs[1, 1].set_ylabel("Value ($)")
+    axs[1, 1].set_title("TSLA High/Low Difference")
+
+    plt.show()
 
 
 # GENERAL METHODS
