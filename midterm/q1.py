@@ -94,33 +94,6 @@ def part2():
     plt.show()
 
 
-# PART 3
-
-def part3():
-    print("Running code for part 3")
-    procValues = dict()
-    timeTaken = dict()
-    for i in range(1, 51):  # for 50 days
-        dayProcValues = getDaysProcValues()
-        startTime = time.time()
-        for j in procValues.values():
-            if j >= (.58 * 1000) - (1000 * .002):
-                procValues[i] = j
-                break
-        endTime = time.time()
-        totalTime = endTime - startTime
-        timeTaken[i] = totalTime
-
-    timeValueKeys = list(timeTaken.keys())
-    timeValueCount = [i for i in timeTaken.values()]
-
-    plt.plot(timeValueKeys, timeValueCount)
-    plt.title("Processing Performance")
-    plt.xlabel("Day #")
-    plt.ylabel("Time Taken (s)")
-    plt.show()
-
-
 def main():
     part1()
     part2()
