@@ -1,5 +1,8 @@
 # Midterm
 
+To run the code in this assignment, you must install the dependencies listed in [requirements.txt](requirements.txt).
+It contains the dependencies for all code files.
+
 ## Q1
 
 Code for this question is found in [q1.py](q1.py)
@@ -50,7 +53,22 @@ had a more consistently higher high end of the graph than some others did.
 
 ## Q3
 
+Code for this question is found in [q3.py](q3.py)
+
 ### Part 1
+
+Similarities in TSLA and AAPL stock include that they both trend upwards, including a sharp rise around the end of 2019.
+They also both start at less than 50 back in 2010. There are several differences, however. Tesla stock seems to be far
+more volatile in both high/low difference and difference at closing from previous day. For closing prices, Tesla could
+fluctuate as much as 40 dollars per day or more between days, where Apple would only fluctuate around a max of 25. For
+high/low fluctuation, Tesla could fluctuate as much as around 45 dollars during a day, where Apple would only fluctuate
+around up to 17 during a day.
+
+I would note that both have increasingly volatile change in day-to-day difference in closing values as they move forward
+in time. This can also be said about the difference in high/low values for each day. I can't say I understand the
+different distributions enough to say which one each of these graphs is most like. If I were to hazard a guess with
+my limited knowledge of each one that we've used during this class, I'd say the difference in closing values is more
+like a beta distribution than any other. It's definitely not uniform, and doesn't seem like a normal distribution.
 
 ## Q5
 
@@ -71,4 +89,5 @@ elaboration in assignment requirements. The language used in assignments thus fa
 times there is a lack of detail in what is being asked by particular questions. Greater detail would likely solve the
 problem. So don't worry, students are not under the impression that this is an issue because of the quality of your
 English. I know you mention this in the midterm question prompt, but I thought I'd offer greater detail than I have
-previously when discussing this with you.
+previously when discussing this with you. I also understand this is easier said than done, so do what you will with this
+feedback. 
