@@ -2,7 +2,7 @@ import gymnasium as gym
 import numpy as np
 from RandomAgent import TimeLimitWrapper
 
-from stable_baselines3 import PPO
+from stable_baselines3 import A2C
 from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.results_plotter import load_results, ts2xy, plot_results
@@ -94,11 +94,12 @@ if __name__ == '__main__':
     # You can choose between `DummyVecEnv` (usually faster) and `SubprocVecEnv`
     # env = make_vec_env(env_id, n_envs=num_cpu, seed=0, vec_env_cls=SubprocVecEnv)
 
-    model = PPO('CnnPolicy', env, verbose=1, tensorboard_log="./board/", learning_rate=0.00003)
+    #model = PPO('CnnPolicy', env, verbose=1, tensorboard_log="./board/", learning_rate=0.00003)
+    model = A2C("MlpPolicy", env, verbose=1, tensorboard_log="./board2/", learning_rate=0.00003)
     #model = PPO.load("tmp/best_model", env=env)
     print("------------- Start Learning -------------")
     callback = SaveOnBestTrainingRewardCallback(check_freq=1000, log_dir=log_dir)
-    model.learn(total_timesteps=5000000, callback=callback, tb_log_name="PPO-00003")
+    model.learn(total_timesteps=452000, callback=callback, tb_log_name="PPO-00003")
     model.save(env_id)
     print("------------- Done Learning -------------")
     env = retro.make(game=env_id)
