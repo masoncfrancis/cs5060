@@ -1,4 +1,4 @@
-import gym
+import gymnasium as gym
 import numpy as np
 from RandomAgent import TimeLimitWrapper
 
@@ -107,5 +107,5 @@ if __name__ == '__main__':
     obs = env.reset()
     for _ in range(1000):
         action, _states = model.predict(obs)
-        obs, rewards, dones, info = env.step(action)
+        obs, rewards, dones, trunc, info = env.step(action)
         env.render()

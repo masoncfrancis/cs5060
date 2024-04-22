@@ -1,5 +1,5 @@
 import retro
-import gym
+import gymnasium as gym
 from RandomAgent import TimeLimitWrapper
 from stable_baselines3 import PPO
 from stable_baselines3.common.atari_wrappers import MaxAndSkipEnv
@@ -19,7 +19,7 @@ def main():
 
     while not done:
         action, state = model.predict(obs)
-        obs, reward, done, info = env.step(action)
+        obs, reward, done, trunc, info = env.step(action)
         env.render()
         if done:
             obs = env.reset()
