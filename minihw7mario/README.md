@@ -10,4 +10,4 @@ To get training to work:
 - import roms by running `python3 -m retro.import [path to folder with zips of roms]`
 - run `python3 TrainPPO.py` or `python3 TrainA2C.py` depending on which one you want
 
-I chose 452000 timesteps because that's what my PPO got to before I got tired of waiting for it. 
+I chose 452000 timesteps because that's what my PPO got to before I got tired of waiting for it because I had other homework to do. 
