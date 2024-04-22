@@ -9,3 +9,5 @@ To get training to work:
 - obtain compatible game rom (I got mine [here](https://archive.org/details/No-Intro-Collection_2016-01-03_Fixed) and specifically downloaded the NES ones)
 - import roms by running `python3 -m retro.import [path to folder with zips of roms]`
 - run `python3 TrainPPO.py` or `python3 TrainA2C.py` depending on which one you want
+
+I chose 452000 timesteps because that's what my PPO got to before I got tired of waiting for it. 
