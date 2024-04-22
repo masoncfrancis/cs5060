@@ -1,5 +1,5 @@
 import retro
-import gym
+import gymnasium as gym
 from stable_baselines3.common.results_plotter import load_results, ts2xy, plot_results
 from stable_baselines3.common.atari_wrappers import MaxAndSkipEnv
 
@@ -15,7 +15,7 @@ class TimeLimitWrapper(gym.Wrapper):
     # Counter of steps per episode
     self.current_step = 0
   
-  def reset(self):
+  def reset(self, seed=0, options={}):
     """
     Reset the environment 
     """
@@ -29,14 +29,14 @@ class TimeLimitWrapper(gym.Wrapper):
     :return: (np.ndarray, float, bool, dict) observation, reward, is the episode over?, additional informations
     """
     self.current_step += 1
-    obs, reward, done, info = self.env.step(action)
+    obs, reward, done, trunc, info = self.env.step(action)
     # Overwrite the done signal when 
     if self.current_step >= self.max_steps:
       done = True
       # Update the info dict to signal that the limit was exceeded
       info['time_limit_reached'] = True
     info['Current_Step'] = self.current_step
-    return obs, reward, done, info
+    return obs, reward, done, trunc, info
 
 def main():
     steps = 0

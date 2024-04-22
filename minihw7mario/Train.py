@@ -78,9 +78,9 @@ def make_env(env_id, rank, seed=0):
         env = retro.make(game=env_id)
         env = TimeLimitWrapper(env, max_steps=2000)
         env = MaxAndSkipEnv(env, 4)
-        env.seed(seed + rank)
+        #env.seed(seed + rank)
         return env
-    set_random_seed(seed)
+    #set_random_seed(seed)
     return _init
 
 if __name__ == '__main__':
