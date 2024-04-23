@@ -1,5 +1,7 @@
 # Mini HW 7 Report
 
+by Mason Francis
+
 ## Implementation Process
 
 My implementation process was pretty simple. I based my code off the repo given, and made the following changes:
