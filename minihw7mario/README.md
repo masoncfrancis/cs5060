@@ -7,7 +7,7 @@ My implementation process was pretty simple. I based my code off the repo given,
 - Used `stable-retro` instead of `gym-retro` because of out-of-date software
 - Used `gymnasium` instead of `gym` because of out-of-date software
 - Used `torch` 2.2 because I wanted to use CUDA, but I think the original `torch` version specified should do fine
-- Got rid of areas where the `seed` parameter is used. Current versions of the software don’t use it
+- Got rid of areas where the `seed` parameter is used. Current versions of the packages don’t use it
 
 Steps to run are included inside my README.md file. I had to make the changes above to make the code run under modern versions of Python (3.10) and with some modern packages. The code has to be run under specific environment conditions or else it won’t work. The starter code trained using PPO, so I was able to switch that out for A2C without too much effort.
 
@@ -27,7 +27,13 @@ I chose 452000 timesteps because that's what my PPO got to before I got tired of
 
 ## Algorithm Comparisons
 
-TODO
+I was not able to get Run.py to work, so I couldn't really compare the outcomes of the algorithms. I did, however notice that A2C trained decently faster than PPO, taking probably 2/3 the time to train. 
+
+Since I'm not able to compare outcomes, I did some reading [here](https://www.linkedin.com/advice/3/how-do-you-handle-exploration-exploitation-trade-off)
+about the differences between A2C and PPO. 
+
+A2C tends to be simpler, but it requires more data. PPO is more efficient, yet more complex than A2C. I would say that my understanding of how A2C works is more clear than for PPO, particularly because PPO is more complex. 
+
 
 ## Challenges Faced
 
@@ -37,8 +43,11 @@ I faced a few challenges with the starter code, primarily it’s age. Although i
 - gym -> gymnasium
 - stable-baselines3 -> newer version compatible with gymnasium
 
-I also ran into challenges getting [Run.py](Run.py) to work. 
+I also was unable to get [Run.py](Run.py) to work, so unfortunately I was not able to view the outcomes of the training. 
 
 ## Key Takeaways
 
-TODO
+I had a few different key takeaways from this assignment. I learned that different types of training take different amounts of time.
+I learned that A2C involve different levels of complexity. I also learned firsthand why GPUs are so useful for this type of work. 
+As soon as I installed the CUDA toolkit and drivers for use with PyTorch, the speed of training increased dramatically. 
+In speaking with my other classmates, this type of performance improvement was experienced by them as well. 
