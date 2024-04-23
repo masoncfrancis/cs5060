@@ -24,17 +24,19 @@ To get training to run:
 - run `pip install "stable-baselines3[extra]"`
 - run `pip install -r requirements.txt`
 - run `pip install torch==2.2.1` (I only did this because I wanted to use CUDA, and this is the `torch` version that matched with my CUDA version)
-- obtain compatible game rom (I got mine [here](https://archive.org/details/No-Intro-Collection_2016-01-03_Fixed) and specifically downloaded the NES ones)
-- import roms by running `python3 -m retro.import [path to folder with zips of roms]`
+- obtain compatible game rom (I got some roms [here](https://archive.org/details/No-Intro-Collection_2016-01-03_Fixed) and specifically downloaded the NES ones. I used one that matched the one used by the starter code)
+- import roms by running `python3 -m retro.import [path to folder with zip(s) of rom(s)]`
 - run `python3 TrainPPO.py` or `python3 TrainA2C.py` depending on which one you want
 
 I chose 452,000 timesteps because that's what my PPO got to before I got tired of waiting for it because I had other pressing homework to do. Just being honest. 
 
 ## Algorithm Comparisons
 
-I was not able to get Run.py to work because of changes in the packages I'm using, so I couldn't really compare the outcomes of the algorithms. Because of that I am unable to provide any graphs and charts to compare them. I did, however, notice that A2C trained decently faster than PPO, taking probably 2/3 the time to train. 
+I was not able to get `Run.py` from the starter code to work because of changes in the packages I'm using, so I couldn't really compare the outcomes of the algorithms. Because of that I am unable to provide any graphs and charts to compare them. 
 
-Since I'm not able to compare outcomes, I did some reading [here](https://www.linkedin.com/advice/3/how-do-you-handle-exploration-exploitation-trade-off) and using [phind.com](phind.com)
+I did, however, notice that A2C trained decently faster than PPO, taking probably 2/3 the time to train. 
+
+Since I'm not able to compare outcomes, I did some learning [here](https://www.linkedin.com/advice/3/how-do-you-handle-exploration-exploitation-trade-off) and using [phind.com](phind.com)
 about the differences and similarities between A2C and PPO. 
 
 A2C tends to be simpler, but it requires more data. PPO is more efficient, yet more complex than A2C. I would say that my understanding of how A2C works is more clear than for PPO, particularly because PPO is more complex. A2C is more prone to larger differences in how it reacts to what it "learns", where PPO doesn't allow outcomes with such large differences to sway it's decisions as easily. Both of these also have some similarities in that, being reinforcement learning algorithms, they are trying to learn from outcomes of actions and adjust their reaction accordingly. They just do it in different styles. 
