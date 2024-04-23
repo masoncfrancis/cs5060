@@ -60,7 +60,7 @@ class SaveOnBestTrainingRewardCallback(BaseCallback):
         return True
 
 # Create log dir
-log_dir = "tmp/"
+log_dir = "tmpppo/"
 os.makedirs(log_dir, exist_ok=True)
 
 
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     env_id = "SuperMarioBros-Nes"
     num_cpu = 4  # Number of processes to use
     # Create the vectorized environment
-    env = VecMonitor(SubprocVecEnv([make_env(env_id, i) for i in range(num_cpu)]),"tmp/TestMonitor")
+    env = VecMonitor(SubprocVecEnv([make_env(env_id, i) for i in range(num_cpu)]),"tmpppo/TestMonitor")
     
     # Stable Baselines provides you with make_vec_env() helper
     # which does exactly the previous steps for you.

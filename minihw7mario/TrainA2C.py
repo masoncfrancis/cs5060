@@ -60,7 +60,7 @@ class SaveOnBestTrainingRewardCallback(BaseCallback):
         return True
 
 # Create log dir
-log_dir = "tmp/"
+log_dir = "tmpa2c/"
 os.makedirs(log_dir, exist_ok=True)
 
 
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     env_id = "SuperMarioBros-Nes"
     num_cpu = 4  # Number of processes to use
     # Create the vectorized environment
-    env = VecMonitor(SubprocVecEnv([make_env(env_id, i) for i in range(num_cpu)]),"tmp/TestMonitor")
+    env = VecMonitor(SubprocVecEnv([make_env(env_id, i) for i in range(num_cpu)]),"tmpa2c/TestMonitor")
     
     # Stable Baselines provides you with make_vec_env() helper
     # which does exactly the previous steps for you.
@@ -99,7 +99,7 @@ if __name__ == '__main__':
     #model = PPO.load("tmp/best_model", env=env)
     print("------------- Start Learning -------------")
     callback = SaveOnBestTrainingRewardCallback(check_freq=1000, log_dir=log_dir)
-    model.learn(total_timesteps=452000, callback=callback, tb_log_name="PPO-00003")
+    model.learn(total_timesteps=452000, callback=callback, tb_log_name="A2C-00003")
     model.save(env_id)
     print("------------- Done Learning -------------")
     env = retro.make(game=env_id)
