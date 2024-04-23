@@ -20,11 +20,14 @@ in figuring out how to get things running.
 
 To get training to run:
 
-- set up a venv with python 3.10. I used Ubuntu 22.04. Use venv. Don't use conda, I ran into some driver issues while trying to use it
+- set up a venv with python 3.10
+    - I used Ubuntu 22.04. Use venv. Don't use conda, I ran into some driver issues while trying to use it
 - run `pip install "stable-baselines3[extra]"`
 - run `pip install -r requirements.txt`
-- run `pip install torch==2.2.1` (I only did this because I wanted to use CUDA, and this is the `torch` version that matched with my CUDA version)
-- obtain compatible game rom (I got some roms [here](https://archive.org/details/No-Intro-Collection_2016-01-03_Fixed) and specifically downloaded the NES ones. I used one that matched the one used by the starter code)
+- run `pip install torch==2.2.1` 
+    - I only did this because I wanted to use CUDA, and this is the `torch` version that matched with my CUDA version
+- obtain compatible game rom 
+    - I got some roms [here](https://archive.org/details/No-Intro-Collection_2016-01-03_Fixed) and specifically downloaded the NES ones. I used one that matched the one used by the starter code
 - import roms by running `python3 -m retro.import [path to folder with zip(s) of rom(s)]`
 - run `python3 TrainPPO.py` or `python3 TrainA2C.py` depending on which one you want
 
