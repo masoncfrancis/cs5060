@@ -36,3 +36,9 @@ I faced a few challenges with the starter code, primarily it’s age. Although i
 - gym-retro -> stable-retro
 - gym -> gymnasium
 - stable-baselines3 -> newer version compatible with gymnasium
+
+I also ran into challenges getting [Run.py](Run.py) to work. 
+
+## Key Takeaways
+
+TODO
