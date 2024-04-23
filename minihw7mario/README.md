@@ -32,12 +32,12 @@ I chose 452,000 timesteps because that's what my PPO got to before I got tired o
 
 ## Algorithm Comparisons
 
-I was not able to get Run.py to work, so I couldn't really compare the outcomes of the algorithms. I did, however notice that A2C trained decently faster than PPO, taking probably 2/3 the time to train. 
+I was not able to get Run.py to work, so I couldn't really compare the outcomes of the algorithms. Because of that I am unable to provide any graphs and charts to compare them. I did, however, notice that A2C trained decently faster than PPO, taking probably 2/3 the time to train. 
 
-Since I'm not able to compare outcomes, I did some reading [here](https://www.linkedin.com/advice/3/how-do-you-handle-exploration-exploitation-trade-off)
-about the differences between A2C and PPO. 
+Since I'm not able to compare outcomes, I did some reading [here](https://www.linkedin.com/advice/3/how-do-you-handle-exploration-exploitation-trade-off) and using [phind.com](phind.com)
+about the differences and similarities between A2C and PPO. 
 
-A2C tends to be simpler, but it requires more data. PPO is more efficient, yet more complex than A2C. I would say that my understanding of how A2C works is more clear than for PPO, particularly because PPO is more complex. 
+A2C tends to be simpler, but it requires more data. PPO is more efficient, yet more complex than A2C. I would say that my understanding of how A2C works is more clear than for PPO, particularly because PPO is more complex. A2C is more prone to larger differences in how it reacts to what it "learns", where PPO doesn't allow outcomes with such large differences to sway it's decisions as easily. Both of these also have some similarities in that, being reinforcement learning algorithms, they are trying to learn from outcomes of actions and adjust their reaction accordingly. They just do it in different styles. 
 
 ## Challenges Faced
 
@@ -47,14 +47,14 @@ I faced a few challenges with the starter code, primarily it’s age. Although i
 - gym -> gymnasium
 - stable-baselines3 -> newer version compatible with gymnasium
 
-I was unable to get the `Run.py` from the starter code to work, so unfortunately I was not able to view the outcomes of the training. 
+Regrettably, I was unable to get the `Run.py` from the starter code to work, so unfortunately I was not able to view the outcomes of the training and am unable to provide graphs and charts about them. 
 
 ## Key Takeaways
 
 I had a few different key takeaways from this assignment. 
 
 - I learned that different types of training take different amounts of time.
-- I learned that A2C involve different levels of complexity. 
+- I learned that A2C and PPO involve different levels of complexity and learn in different styles.
 - I also learned firsthand why GPUs are so useful for this type of work. 
     - As soon as I installed the CUDA toolkit and drivers for use with PyTorch, the speed of training increased dramatically. 
     - In speaking with my other classmates, this type of performance improvement was experienced by them as well. 
