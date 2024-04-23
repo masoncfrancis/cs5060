@@ -32,7 +32,7 @@ I chose 452,000 timesteps because that's what my PPO got to before I got tired o
 
 ## Algorithm Comparisons
 
-I was not able to get Run.py to work, so I couldn't really compare the outcomes of the algorithms. Because of that I am unable to provide any graphs and charts to compare them. I did, however, notice that A2C trained decently faster than PPO, taking probably 2/3 the time to train. 
+I was not able to get Run.py to work because of changes in the packages I'm using, so I couldn't really compare the outcomes of the algorithms. Because of that I am unable to provide any graphs and charts to compare them. I did, however, notice that A2C trained decently faster than PPO, taking probably 2/3 the time to train. 
 
 Since I'm not able to compare outcomes, I did some reading [here](https://www.linkedin.com/advice/3/how-do-you-handle-exploration-exploitation-trade-off) and using [phind.com](phind.com)
 about the differences and similarities between A2C and PPO. 
@@ -47,7 +47,7 @@ I faced a few challenges with the starter code, primarily it’s age. Although i
 - gym -> gymnasium
 - stable-baselines3 -> newer version compatible with gymnasium
 
-Regrettably, I was unable to get the `Run.py` from the starter code to work, so unfortunately I was not able to view the outcomes of the training and am unable to provide graphs and charts about them. 
+Regrettably, I was unable to get the `Run.py` from the starter code to work because of changes in the packages I'm using, so unfortunately I was not able to view the outcomes of the training and am unable to provide graphs and charts about them. 
 
 ## Key Takeaways
 
