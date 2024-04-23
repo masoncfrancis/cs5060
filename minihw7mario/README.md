@@ -8,7 +8,7 @@ My implementation process was pretty simple. I based my code off the repo given,
 
 - Used `stable-retro` instead of `gym-retro` because of out-of-date software
 - Used `gymnasium` instead of `gym` because of out-of-date software
-- Used `torch` 2.2 because I wanted to use CUDA, but I think the original `torch` version specified should do fine
+- Used `torch` 2.2.2 because I wanted to use CUDA, but I think the original `torch` version specified should do fine
 - Got rid of areas where the `seed` parameter is used. Current versions of the packages don’t use it
 
 Steps to run are included inside my README.md file. I had to make the changes above to make the code run under modern versions of Python (3.10) and with some modern packages. The code has to be run under specific environment conditions or else it won’t work. The starter code trained using PPO, so I was able to switch that out for A2C without too much effort.
