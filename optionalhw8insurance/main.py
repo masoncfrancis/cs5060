@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.linear_model import LinearRegression
 
 
 def main():
@@ -9,21 +10,18 @@ def main():
 
     length = len(frame)
 
-    # get values from columns
-    menRows = frame[frame["Gender"] == "M"]
-
-    womenRows = frame[frame["Gender"] == "F"]
+    # plot values
 
     premium = frame["Monthly.Premium.Auto"]
-    complaints = frame["Number.of.Open.Complaints"]
-    claimAmount = frame["Total.Claim.Amount"]
 
+    claimAmount = frame["Total.Claim.Amount"]
     plt.plot(claimAmount.tolist(), premium.tolist(), linestyle='None', marker='o', label="Men")
     plt.title("Claim Amounts vs. Premiums")
     plt.xlabel("Claim Amount")
     plt.ylabel("Monthly Premium")
     plt.show()
 
+    complaints = frame["Number.of.Open.Complaints"]
     plt.plot(complaints.tolist(), premium.tolist(), linestyle='None', marker='o', label="Men")
     plt.title("Complaints vs. Premiums")
     plt.xlabel("Open Complaints")
@@ -53,6 +51,8 @@ def main():
     plt.xlabel("Employment Status")
     plt.ylabel("Monthly Premium")
     plt.show()
+
+    # Develop linear regresion models
 
 
 if __name__ == "__main__":
