@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 
 
 def makePlots(frame):
@@ -50,9 +51,22 @@ def getFrame():
     return pd.read_csv('dataset.csv')
 
 
+def createModel(frame):
+    # I received help on this part on how to use SciKit-Learn to make a model
+    # using the Phind search engine
+
+    x = frame[['Total.Claim.Amount', 'Vehicle.Class', 'Coverage', 'Education', 'EmploymentStatus']]
+    y = ['Monthly.Premium.Auto']
+
+    xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.2)
+
+
+
+
 def main():
     frame = getFrame()
     makePlots(frame)
+    createModel(frame)
 
 
 if __name__ == "__main__":
