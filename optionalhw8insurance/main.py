@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import StandardScaler
+from sklearn.compose import ColumnTransformer
+import numpy as np
 
 
 def makePlots(frame):
@@ -55,10 +60,36 @@ def createModel(frame):
     # I received help on this part on how to use SciKit-Learn to make a model
     # using the Phind search engine
 
-    x = frame[['Total.Claim.Amount', 'Vehicle.Class', 'Coverage', 'Education', 'EmploymentStatus']]
+    numCols = ['Total.Claim.Amount']
+    catCols = ['Vehicle.Class', 'Coverage', 'Education', 'EmploymentStatus']
+
+    numTransformer = StandardScaler()
+    catTransformer = OneHotEncoder(handle_unknown='ignore')
+
+    preproc = ColumnTransformer(
+        transformers=[
+            ('num', numTransformer, numCols),
+            ('cat', catTransformer, catCols)
+        ]
+    )
+
+    x = preproc.fit_transform(frame)
     y = frame['Monthly.Premium.Auto']
 
     xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.2)
+
+    model = LinearRegression()
+    model.fit(xTrain, yTrain)
+
+    # predict stuff
+    yPred = model.predict(xTest)
+
+    # plot actual vs predicted vals
+    plt.scatter(yTest, yPred)
+    plt.xlabel("Actual")
+    plt.ylabel("Predicted")
+    plt.title("Actual vs Predicted Monthly Premiums")
+    plt.show()
 
 
 def main():
