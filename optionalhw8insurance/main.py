@@ -4,14 +4,7 @@ import seaborn as sns
 from sklearn.linear_model import LinearRegression
 
 
-def main():
-    # import the csv
-    frame = pd.read_csv('dataset.csv')
-
-    length = len(frame)
-
-    # plot values
-
+def makePlots(frame):
     premium = frame["Monthly.Premium.Auto"]
 
     claimAmount = frame["Total.Claim.Amount"]
@@ -52,7 +45,14 @@ def main():
     plt.ylabel("Monthly Premium")
     plt.show()
 
-    # Develop linear regresion models
+
+def getFrame():
+    return pd.read_csv('dataset.csv')
+
+
+def main():
+    frame = getFrame()
+    makePlots(frame)
 
 
 if __name__ == "__main__":
