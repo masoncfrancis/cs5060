@@ -56,11 +56,9 @@ def createModel(frame):
     # using the Phind search engine
 
     x = frame[['Total.Claim.Amount', 'Vehicle.Class', 'Coverage', 'Education', 'EmploymentStatus']]
-    y = ['Monthly.Premium.Auto']
+    y = frame['Monthly.Premium.Auto']
 
     xTrain, xTest, yTrain, yTest = train_test_split(x, y, test_size=0.2)
-
-
 
 
 def main():
